@@ -1,7 +1,7 @@
 class APIException(Exception):
     pass
 
-class BaseAPI():
+class BaseAPI(object):
     def __init__(self, user, max_imgs=1):
         self.user = user
         self.max_imgs = max_imgs
