@@ -119,7 +119,10 @@ if __name__ == "__main__":
         main()
     except requests.exceptions.RequestException as e:
         logging.error("Network error:\n %s" % e)
+        sys.exit(1)
     except APIException as e:
         logging.error("API error: \n%s" % e)
+        sys.exit(2)
     except Exception as e:
         logging.exception("Undefined error: \n%s" % e)
+        sys.exit(3)
