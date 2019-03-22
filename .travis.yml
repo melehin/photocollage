@@ -1,0 +1,9 @@
+sudo: false
+language: python
+python:
+    - 2.7
+    - 3.6
+install:
+    - pip install -r requirements.txt
+script:
+ - python photocollage.py --count=4 --cell_size=100 --ratio=2x2 --procs=2 --out=result.jpg

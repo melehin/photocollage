@@ -1,4 +1,5 @@
-# Flickr.com photo collage maker (public photos only)
+
+# Flickr.com photo collage maker (public photos only) [![Build Status](https://travis-ci.org/melehin/photocollage.svg?branch=master)](https://travis-ci.org/melehin/photocollage)
 ## Install
 ```sh
 git clone https://github.com/melehin/photocollage.git
