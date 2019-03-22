@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from apis.base import BaseAPI
 from apis.flickr import FlickrPhotoAPI
 
@@ -13,6 +14,6 @@ class DataGen:
     def __iter__(self):
         return self
 
-def make(user, max_imgs, w, h) -> BaseAPI:
+def make(user, max_imgs, w, h):
     return DataGen(FlickrPhotoAPI(user, max_imgs), w, h)
     
