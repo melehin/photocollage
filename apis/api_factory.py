@@ -16,7 +16,7 @@ class DataGen:
         return self
 
 def make(user, max_imgs, w, h):
-    if '@' in user:
+    if user and '@' in user:
         return DataGen(InstagramPhotoAPI(user.replace('@', ''), max_imgs), w, h)
     else:
         return DataGen(FlickrPhotoAPI(user, max_imgs), w, h)
