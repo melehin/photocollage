@@ -7,3 +7,4 @@ install:
     - pip install -r requirements.txt
 script:
  - python photocollage.py --count=4 --cell_size=100 --ratio=2x2 --procs=2 --out=result.jpg
+ - python photocollage.py --count=24 --cell_size=100 --ratio=2x12 --procs=2 --login=@instagram --out=result.jpg
