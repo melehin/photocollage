@@ -1,9 +1,10 @@
 from __future__ import absolute_import
+from builtins import object
 from apis.base import BaseAPI
 from apis.flickr import FlickrPhotoAPI
 from apis.instagram import InstagramPhotoAPI
 
-class DataGen:
+class DataGen(object):
     def __init__(self, url_generator, w, h):
         self.url_generator = url_generator
         self.w = w

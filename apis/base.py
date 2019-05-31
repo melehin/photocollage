@@ -1,3 +1,5 @@
+from builtins import object
+
 class APIException(Exception):
     pass
 

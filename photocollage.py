@@ -93,6 +93,7 @@ def main():
     i = 0
     j = 0
     drown = 0
+
     for result in results:
         if i >= args.cols:
             i = 0
@@ -102,7 +103,10 @@ def main():
         i += 1
         drown += 1
         printProgressBar(drown, args.count)
-    
+
+    if drown == 0:
+        raise APIException("Can't find images on server")
+
     logging.debug("Time: %.2fs" % (time() - start))
     
     # Write output
