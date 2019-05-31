@@ -26,13 +26,6 @@ class InstagramPhotoAPI(BaseAPI):
         if r.status_code != 200:
             raise APIException('User with this login not found')
 
-        # Get rhx_gis for GIS signature
-        m = re.search(b"rhx_gis\":\"(.+?)\"", r.content)
-        if not m:
-            raise APIException('Error extract rhx_gis from main page')
-        
-        self.rhx_gis = m.group(1)
-
         # Get shared data
         m = re.search(b">window._sharedData = (.+?);</script>", r.content)
         if not m:
@@ -74,15 +67,12 @@ class InstagramPhotoAPI(BaseAPI):
     def load(self, end_cursor=None):
         if not end_cursor:
             raise StopIteration()
-
+        
         variables = json.dumps({"id": self.user_id, "first": self.per_page, "after": end_cursor}).replace(" ", "")
-        s = "{}:{}".format(self.rhx_gis.decode(), variables).encode('utf-8')
-        gis = hashlib.md5(s).hexdigest()
-
 
         r = self.session.get("https://www.instagram.com/graphql/query/", params={
             'query_hash': self.query_hash, 
-            'variables': variables}, headers={'x-instagram-gis': gis})
+            'variables': variables})
 
         if r.status_code != 200:
             self.max_imgs = 0
